@@ -66,16 +66,16 @@ END
 
 STRINGTABLE 
 BEGIN
-    OBJ_NAME                "Template"
-    OBJ_AUTHOR              "Construct Team"
+    OBJ_NAME                "AxeLevel"
+    OBJ_AUTHOR              "K. K."
     OBJ_VERSION             "1.00"
-    OBJ_DESCRIPTION         "Template SDK object."
-    OBJ_DATE                "Jun 07"
-    OBJ_COPYRIGHT           "Copyright (C) Ashley Gullen, Scirra"
-    OBJ_WEB                 "www.scirra.com"
-    OBJ_EMAIL               "ashley@scirra.com"
+    OBJ_DESCRIPTION         "Level utility plugin for project Axecop"
+    OBJ_DATE                "Feb 2010"
+    OBJ_COPYRIGHT           "No copyright"
+    OBJ_WEB                 "www.paahdin.com"
+    OBJ_EMAIL               "fanmail@paahdin.com"
     IDS_CATEGORY            "Game"
-    IDS_LICENSE             "Freeware"
+    IDS_LICENSE             "No license"
 END
 
 #endif    // English (U.S.) resources

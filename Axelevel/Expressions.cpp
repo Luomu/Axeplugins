@@ -25,9 +25,13 @@ long ExtObject::ReturnUndefinedExpression(CString& expName, LPVAL theParams, Exp
 // Expressions
 //////////////////////////////////////////////////////////////////////////////////
 
-long ExtObject::eMyExpression(LPVAL params, ExpReturn& ret)
+long ExtObject::eObjectCount( LPVAL params, ExpReturn& ret )
 {
-	// Return 0 using ExpReturn's operator=
-	// Use ret.ReturnString() for strings.
-	return ret = 0;
+	return ret = roomObjects.size();
+}
+
+long ExtObject::eObject( LPVAL params, ExpReturn& ret )
+{
+	std::string str("undefined");
+	return ret.ReturnString(pRuntime, str.c_str());
 }

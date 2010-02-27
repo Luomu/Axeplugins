@@ -19,7 +19,7 @@
 //OF_NOCOMMONDEBUG - Don't show 'Common' field (X/Y/W/H/Angle/Opacity) in debugger
 //OF_NODEBUG - Don't show at all in debugger
 //OF_UNDEFINEDEXPRESSIONS - Allow ReturnUndefinedExpression to be called
-#define IDE_FLAGS 	OF_NOCOMMONDEBUG
+#define IDE_FLAGS 	OF_NOCOMMONDEBUG | OF_NODRAW
 
 #include "..\Common\ExpReturn.hpp"
 
@@ -69,17 +69,24 @@ public:
 	// ACTIONS, CONDITIONS AND EXPRESSIONS DEFINITIONS
 #include "..\Common\CommonAceDecl.hpp"
 
-	long cMyCondition(LPVAL params);
+	//long cMyCondition(LPVAL params);
 
-	long aMyAction(LPVAL params);
+	//long aMyAction(LPVAL params);
+	long aSaveRoom(LPVAL params);
+	long aLoadRoom(LPVAL params);
+	long aAddObject(LPVAL params);
+	long aClearData(LPVAL params);
 
-	long eMyExpression(LPVAL params, ExpReturn& ret);
+	//long eMyExpression(LPVAL params, ExpReturn& ret);
+	long eObjectCount(LPVAL params, ExpReturn& ret);
+	long eObject(LPVAL params, ExpReturn& ret);
 
 	////////////////////////////////////////////////////
 	// Data members
 
 	// Use when private variables (OF_PRIVATEVARIABLES) are enabled.
 	//vector<ExpStore> privateVars;
+	std::vector<std::string> roomObjects;
 };
 
 //////////// EDITTIME INFO ////////////
@@ -108,9 +115,9 @@ public:
 
 	///////////////////////////
 	// Your edittime extension data goes here
-	int iTexture;		// DX texture
+	//int iTexture;		// DX texture
 
-	int myValue;
+	//int myValue;
 };
 
 // Internal stuff include

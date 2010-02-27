@@ -23,7 +23,7 @@ ExtObject::ExtObject(initialObject* editObject, VRuntime* pVRuntime)
 // up your object here so it is safe to make runtime calls.
 void ExtObject::OnCreate()
 {
-	int myValue;
+	//int myValue;
 
 	// Load the edittime data that was serialized.
 	bin ar;
@@ -33,7 +33,7 @@ void ExtObject::OnCreate()
 	// Your runtime loader must be able to load all versions!
 	int Version = 0;
 	ar >> Version;
-	ar >> myValue;
+	//ar >> myValue;
 
 	// Finished reading data
 	ar.detach();
