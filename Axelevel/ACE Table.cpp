@@ -37,13 +37,35 @@ void DefineACES(MicroAceTime* at)
 	ADDPARAM(PARAM_STRING, "File name", "File to load from");
 	ADDACT("Load room", "Rooms", "Load room from %0", &ExtObject::aLoadRoom, "LoadRoom", 0);
 	ADDACT("Clear room data", "Rooms", "Clear room data", &ExtObject::aClearData, "ClearRoomData", 0);
+	ADDPARAM(PARAM_STRING, "Data string", "|-delimited string. See docs!");
+	ADDACT("Add object from string", "Rooms", "Add %0 as string to objects", &ExtObject::aAddObjectString, "AddObjectString", 0);
+
+	//Room saving
+	ADDPARAM(PARAM_VALUE, "Type", "0=Sprite, 1=Tiled");
+	ADDPARAM(PARAM_STRING, "Name", "Object name");
+	ADDPARAM(PARAM_VALUE, "X", "X position");
+	ADDPARAM(PARAM_VALUE, "Y", "Y position");
+	ADDPARAM(PARAM_VALUE, "Angle", "Rotation");
+	ADDPARAM(PARAM_VALUE, "Width", "Width");
+	ADDPARAM(PARAM_VALUE, "Height", "Height");
+	ADDPARAM(PARAM_STRING, "XData", "|-delimited string for custom data");
+	ADDACT("Add object", "Rooms", "Add %1 to objects", &ExtObject::aAddObject, "AddObject", 0);
 
 	/////////////////////////////
 	// Expressions
 	// ADDEXP(List name, Category, Display string, Function address, Flags)
 	//ADDEXP("My expression", "My category", "MyExpression", &ExtObject::eMyExpression, RETURN_INTEGER);
 	ADDEXP("Object count", "Rooms", "ObjectCount", &ExtObject::eObjectCount, RETURN_VALUE);
+	ADDPARAM(PARAM_VALUE, "Object number", "1-n");
 	ADDEXP("Object", "Rooms", "Object", &ExtObject::eObject, RETURN_STRING);
+
+	ADDPARAM(PARAM_VALUE, "Object number", "1-n");
+	ADDPARAM(PARAM_VALUE, "Value index", "1-6");
+	ADDEXP("Object value", "Rooms", "ObjectValue", &ExtObject::eObjectValue, RETURN_VALUE);
+	ADDPARAM(PARAM_VALUE, "Object number", "1-n");
+	ADDEXP("Object name", "Rooms", "ObjectName", &ExtObject::eObjectName, RETURN_STRING);
+	ADDPARAM(PARAM_VALUE, "Object number", "1-n");
+	ADDEXP("Object XData", "Rooms", "ObjectXData", &ExtObject::eObjectXData, RETURN_STRING);
 
 	// This line includes your common ACEs as specified in Main.h
 #include "..\Common\CommonAceTable.hpp"

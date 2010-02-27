@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="Axelevel"
 	ProjectGUID="{E4FC0DEC-403B-44D0-8B45-6AC365B15CE2}"
 	RootNamespace="Sprite"
@@ -84,7 +84,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="..\IDE\Plugins\Axelevel.csx"
+				OutputFile="C:\Program Files\Scirra\Construct9983\Plugins\Axelevel.csx"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				IgnoreAllDefaultLibraries="false"
@@ -195,7 +195,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="..\IDE\Plugins\Runtime\Axelevel.csx"
+				OutputFile="C:\Program Files\Scirra\Construct9983\Plugins\Runtime\Axelevel.csx"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				IgnoreAllDefaultLibraries="false"
@@ -711,6 +711,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\RoomObject.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Runtime.cpp"
 				>
 				<FileConfiguration
@@ -808,6 +812,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\RoomObject.h"
+				>
+			</File>
+			<File
 				RelativePath="StdAfx.h"
 				>
 			</File>
@@ -833,7 +841,7 @@
 				>
 			</File>
 			<File
-				RelativePath="res\ICON.BMP"
+				RelativePath="ICON.BMP"
 				>
 				<FileConfiguration
 					Name="Runtime|Win32"
@@ -845,7 +853,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="ICON.BMP"
+				RelativePath="res\ICON.BMP"
 				>
 				<FileConfiguration
 					Name="Runtime|Win32"

@@ -32,6 +32,43 @@ long ExtObject::eObjectCount( LPVAL params, ExpReturn& ret )
 
 long ExtObject::eObject( LPVAL params, ExpReturn& ret )
 {
-	std::string str("undefined");
-	return ret.ReturnString(pRuntime, str.c_str());
+	int idx = params[0].GetInt() - 1;
+	//CString str(roomObjects.at(idx).c_str());
+	CString str("undefined");
+	return ret.ReturnString(pRuntime, str);
+}
+
+
+long ExtObject::eObjectValue( LPVAL params, ExpReturn& ret )
+{
+	int idx = params[0].GetInt() - 1;
+	RoomObject& ro = roomObjects.at(idx);
+	switch(params[1].GetInt()) {
+	case 1:
+		return ret = ro.type;
+	case 2:
+		return ret = ro.xpos;
+	case 3:
+		return ret = ro.ypos;
+	case 4:
+		return ret = ro.angle;
+	case 5:
+		return ret = ro.width;
+	case 6:
+		return ret = ro.height;
+	default:
+		return ret = 0;
+	}
+}
+
+long ExtObject::eObjectName( LPVAL params, ExpReturn& ret )
+{
+	RoomObject& ro = roomObjects.at(params[0].GetInt() - 1);
+	return ret.ReturnString(pRuntime, ro.name.c_str());
+}
+
+long ExtObject::eObjectXData( LPVAL params, ExpReturn& ret )
+{
+	RoomObject& ro = roomObjects.at(params[0].GetInt() - 1);
+	return ret.ReturnString(pRuntime, ro.xdata.c_str());
 }

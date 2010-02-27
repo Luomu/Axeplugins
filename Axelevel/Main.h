@@ -22,6 +22,7 @@
 #define IDE_FLAGS 	OF_NOCOMMONDEBUG | OF_NODRAW
 
 #include "..\Common\ExpReturn.hpp"
+#include "RoomObject.h"
 
 #define OBJECTRECT CRect(editObject->objectX, editObject->objectY, editObject->objectX + editObject->objectWidth, editObject->objectY + editObject->objectHeight)
 
@@ -75,18 +76,22 @@ public:
 	long aSaveRoom(LPVAL params);
 	long aLoadRoom(LPVAL params);
 	long aAddObject(LPVAL params);
+	long aAddObjectString(LPVAL params);
 	long aClearData(LPVAL params);
 
 	//long eMyExpression(LPVAL params, ExpReturn& ret);
 	long eObjectCount(LPVAL params, ExpReturn& ret);
 	long eObject(LPVAL params, ExpReturn& ret);
+	long eObjectValue(LPVAL params, ExpReturn& ret);
+	long eObjectName(LPVAL params, ExpReturn& ret);
+	long eObjectXData(LPVAL params, ExpReturn& ret);
 
 	////////////////////////////////////////////////////
 	// Data members
 
 	// Use when private variables (OF_PRIVATEVARIABLES) are enabled.
 	//vector<ExpStore> privateVars;
-	std::vector<std::string> roomObjects;
+	std::vector<RoomObject> roomObjects;
 };
 
 //////////// EDITTIME INFO ////////////
