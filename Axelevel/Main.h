@@ -21,7 +21,7 @@
 //OF_UNDEFINEDEXPRESSIONS - Allow ReturnUndefinedExpression to be called
 #define IDE_FLAGS 	OF_NOCOMMONDEBUG
 
-#include "..\..\Common\ExpReturn.hpp"
+#include "..\Common\ExpReturn.hpp"
 
 #define OBJECTRECT CRect(editObject->objectX, editObject->objectY, editObject->objectX + editObject->objectWidth, editObject->objectY + editObject->objectHeight)
 
@@ -67,7 +67,7 @@ public:
 
 	////////////////////////////////////////////////////
 	// ACTIONS, CONDITIONS AND EXPRESSIONS DEFINITIONS
-#include "..\..\Common\CommonAceDecl.hpp"
+#include "..\Common\CommonAceDecl.hpp"
 
 	long cMyCondition(LPVAL params);
 
@@ -114,8 +114,8 @@ public:
 };
 
 // Internal stuff include
-#include "..\..\Common\Internal.hpp"
-#include "..\..\Common\Properties.h"
+#include "..\Common\Internal.hpp"
+#include "..\Common\Properties.h"
 
 // Only include once
 #endif

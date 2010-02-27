@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="Template SDK"
+	Name="Axelevel"
 	ProjectGUID="{E4FC0DEC-403B-44D0-8B45-6AC365B15CE2}"
 	RootNamespace="Sprite"
 	Keyword="MFCProj"
@@ -44,7 +44,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\..\..\..\Construct Compile\Sprite Object\Release/ConstructSDK.tlb"
+				TypeLibraryName="..\Construct Compile\Sprite Object\Release/ConstructSDK.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -84,7 +84,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="..\..\IDE\Plugins\Template.csx"
+				OutputFile="..\IDE\Plugins\Axelevel.csx"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				IgnoreAllDefaultLibraries="false"
@@ -111,7 +111,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\..\..\..\Construct Compile\Sprite Object\Release/ConstructSDK.bsc"
+				OutputFile="..\Construct Compile\Sprite Object\Release/ConstructSDK.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -152,7 +152,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\..\..\..\Construct Compile\Sprite Object\Runtime/ConstructSDK.tlb"
+				TypeLibraryName="..\Construct Compile\Sprite Object\Runtime/ConstructSDK.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -195,7 +195,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="..\..\IDE\Plugins\Runtime\Template.csx"
+				OutputFile="..\IDE\Plugins\Runtime\Axelevel.csx"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				IgnoreAllDefaultLibraries="false"
@@ -223,7 +223,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\..\..\..\Construct Compile\Sprite Object\Runtime/ConstructSDK.bsc"
+				OutputFile="..\Construct Compile\Sprite Object\Runtime/ConstructSDK.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -263,7 +263,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\..\..\..\Construct Compile\Sprite Object\Debug/ConstructSDK.tlb"
+				TypeLibraryName="..\Construct Compile\Sprite Object\Debug/ConstructSDK.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -298,7 +298,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="..\..\IDE\Plugins\Template.csx"
+				OutputFile="..\IDE\Plugins\Axelevel.csx"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				ModuleDefinitionFile=".\ConstructSDK.def"
@@ -322,7 +322,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\..\..\..\Construct Compile\Sprite Object\Debug/ConstructSDK.bsc"
+				OutputFile="..\Construct Compile\Sprite Object\Debug/ConstructSDK.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"
@@ -362,7 +362,7 @@
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\..\..\..\Construct Compile\Sprite Object\Debug_Runtime/ConstructSDK.tlb"
+				TypeLibraryName="..\Construct Compile\Sprite Object\Debug_Runtime/ConstructSDK.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
@@ -397,7 +397,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="..\..\IDE\Plugins\Runtime\Template.csx"
+				OutputFile="..\IDE\Plugins\Runtime\Axelevel.csx"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				ModuleDefinitionFile=".\ConstructSDKRun.def"
@@ -421,7 +421,7 @@
 			<Tool
 				Name="VCBscMakeTool"
 				SuppressStartupBanner="true"
-				OutputFile=".\..\..\..\Construct Compile\Sprite Object\Debug_Runtime/ConstructSDK.bsc"
+				OutputFile="..\Construct Compile\Sprite Object\Debug_Runtime/ConstructSDK.bsc"
 			/>
 			<Tool
 				Name="VCFxCopTool"

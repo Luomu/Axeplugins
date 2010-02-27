@@ -39,7 +39,7 @@ void DefineACES(MicroAceTime* at)
 	ADDEXP("My expression", "My category", "MyExpression", &ExtObject::eMyExpression, RETURN_INTEGER);
 
 	// This line includes your common ACEs as specified in Main.h
-#include "..\..\Common\CommonAceTable.hpp"
+#include "..\Common\CommonAceTable.hpp"
 }
 
 
