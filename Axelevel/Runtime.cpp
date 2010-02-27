@@ -24,6 +24,9 @@ ExtObject::ExtObject(initialObject* editObject, VRuntime* pVRuntime)
 void ExtObject::OnCreate()
 {
 	//int myValue;
+	offsetX = 0;
+	offsetY = 0;
+	roomAngle = 0;
 
 	// Load the edittime data that was serialized.
 	bin ar;

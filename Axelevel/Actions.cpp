@@ -64,3 +64,12 @@ long ExtObject::aAddObject( LPVAL params )
 	ro.xdata = std::string("");
 	return 0;
 }
+
+
+long ExtObject::aSetOffset( LPVAL params )
+{
+	offsetX = params[0].GetInt();
+	offsetY = params[1].GetInt();
+	roomAngle = params[2].GetInt();
+	return 0;
+}

@@ -51,6 +51,11 @@ void DefineACES(MicroAceTime* at)
 	ADDPARAM(PARAM_STRING, "XData", "|-delimited string for custom data");
 	ADDACT("Add object", "Rooms", "Add %1 to objects", &ExtObject::aAddObject, "AddObject", 0);
 
+	ADDPARAM(PARAM_VALUE, "X offset", "Room object coordinates X offset");
+	ADDPARAM(PARAM_VALUE, "Y offset", "Room object coordinates Y offset");
+	ADDPARAM(PARAM_VALUE, "Angle", "Room object rotation (0/90/180/270)");
+	ADDACT("Set offset", "Rooms", "Set offset to %0,%1 at %2 degrees", &ExtObject::aSetOffset, "SetOffset", 0);
+
 	/////////////////////////////
 	// Expressions
 	// ADDEXP(List name, Category, Display string, Function address, Flags)

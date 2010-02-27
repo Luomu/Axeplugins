@@ -78,6 +78,7 @@ public:
 	long aAddObject(LPVAL params);
 	long aAddObjectString(LPVAL params);
 	long aClearData(LPVAL params);
+	long aSetOffset(LPVAL params);
 
 	//long eMyExpression(LPVAL params, ExpReturn& ret);
 	long eObjectCount(LPVAL params, ExpReturn& ret);
@@ -92,6 +93,10 @@ public:
 	// Use when private variables (OF_PRIVATEVARIABLES) are enabled.
 	//vector<ExpStore> privateVars;
 	std::vector<RoomObject> roomObjects;
+	int offsetX;
+	int offsetY;
+	int roomAngle;
+	int transform(int x, int y, bool which);
 };
 
 //////////// EDITTIME INFO ////////////

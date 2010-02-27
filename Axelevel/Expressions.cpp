@@ -47,9 +47,9 @@ long ExtObject::eObjectValue( LPVAL params, ExpReturn& ret )
 	case 1:
 		return ret = ro.type;
 	case 2:
-		return ret = ro.xpos;
+		return ret = ro.xpos + offsetX;
 	case 3:
-		return ret = ro.ypos;
+		return ret = ro.ypos + offsetY;
 	case 4:
 		return ret = ro.angle;
 	case 5:
