@@ -804,6 +804,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Level.h"
+				>
+			</File>
+			<File
 				RelativePath="Main.h"
 				>
 			</File>
@@ -841,7 +845,7 @@
 				>
 			</File>
 			<File
-				RelativePath="ICON.BMP"
+				RelativePath="res\ICON.BMP"
 				>
 				<FileConfiguration
 					Name="Runtime|Win32"
@@ -853,7 +857,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="res\ICON.BMP"
+				RelativePath="ICON.BMP"
 				>
 				<FileConfiguration
 					Name="Runtime|Win32"

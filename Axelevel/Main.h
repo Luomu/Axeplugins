@@ -79,6 +79,10 @@ public:
 	long aAddObjectString(LPVAL params);
 	long aClearData(LPVAL params);
 	long aSetOffset(LPVAL params);
+	long aSaveLevel(LPVAL params);
+	long aLoadLevel(LPVAL params);
+	long aClearLevelData(LPVAL params);
+	long aAddRoom(LPVAL params);
 
 	//long eMyExpression(LPVAL params, ExpReturn& ret);
 	long eObjectCount(LPVAL params, ExpReturn& ret);
@@ -92,6 +96,7 @@ public:
 
 	// Use when private variables (OF_PRIVATEVARIABLES) are enabled.
 	//vector<ExpStore> privateVars;
+	Level level;
 	std::vector<RoomObject> roomObjects;
 	int offsetX;
 	int offsetY;

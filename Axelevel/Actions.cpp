@@ -73,3 +73,24 @@ long ExtObject::aSetOffset( LPVAL params )
 	roomAngle = params[2].GetInt();
 	return 0;
 }
+
+long ExtObject::aSaveLevel( LPVAL params )
+{
+	return 0;
+}
+
+long ExtObject::aLoadLevel( LPVAL params )
+{
+	return 0;
+}
+
+long ExtObject::aClearLevelData( LPVAL params )
+{
+	level.clear();
+	return 0;
+}
+
+long ExtObject::aAddRoom( LPVAL params )
+{
+	return 0;
+}
