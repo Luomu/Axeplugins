@@ -22,6 +22,7 @@
 #define IDE_FLAGS 	OF_NOCOMMONDEBUG | OF_NODRAW
 
 #include "..\Common\ExpReturn.hpp"
+#include "Level.h"
 #include "RoomObject.h"
 
 #define OBJECTRECT CRect(editObject->objectX, editObject->objectY, editObject->objectX + editObject->objectWidth, editObject->objectY + editObject->objectHeight)
@@ -66,6 +67,9 @@ public:
 	void		DebuggerUpdateDisplay(ExpStore*& pPrivateVars);
 	void		OnDebuggerValueChanged(const char* name, const char* value);
 
+	// Custom stuff that are not ACEs
+	void		RaiseConstructError(const CString& msg);
+
 	////////////////////////////////////////////////////
 	// ACTIONS, CONDITIONS AND EXPRESSIONS DEFINITIONS
 #include "..\Common\CommonAceDecl.hpp"
@@ -91,6 +95,9 @@ public:
 	long eObjectName(LPVAL params, ExpReturn& ret);
 	long eObjectXData(LPVAL params, ExpReturn& ret);
 
+	long cErrorOccurred(LPVAL params);
+	long eErrorString(LPVAL params, ExpReturn& ret);
+
 	////////////////////////////////////////////////////
 	// Data members
 
@@ -101,7 +108,8 @@ public:
 	int offsetX;
 	int offsetY;
 	int roomAngle;
-	int transform(int x, int y, bool which);
+	bool unprocessedErrors;
+	CString errorString;
 };
 
 //////////// EDITTIME INFO ////////////

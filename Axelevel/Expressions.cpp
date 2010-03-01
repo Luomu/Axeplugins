@@ -72,3 +72,8 @@ long ExtObject::eObjectXData( LPVAL params, ExpReturn& ret )
 	RoomObject& ro = roomObjects.at(params[0].GetInt() - 1);
 	return ret.ReturnString(pRuntime, ro.xdata.c_str());
 }
+
+long ExtObject::eErrorString( LPVAL params, ExpReturn& ret )
+{
+	return ret.ReturnString(pRuntime, errorString);
+}

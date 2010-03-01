@@ -23,6 +23,8 @@ ExtObject::ExtObject(initialObject* editObject, VRuntime* pVRuntime)
 // up your object here so it is safe to make runtime calls.
 void ExtObject::OnCreate()
 {
+	errorString = "";
+	unprocessedErrors = false;
 	//int myValue;
 	offsetX = 0;
 	offsetY = 0;
@@ -105,6 +107,11 @@ long ExtObject::CallFunction(int id, void* param)
 	return 0;
 }
 
+void ExtObject::RaiseConstructError( const CString& msg )
+{
+	unprocessedErrors = true;
+	errorString = msg;
+}
 #else //ifdef RUN_ONLY
 
 CRunObject* WINAPI RTCreateObject(bin& ar, VRuntime* pRuntime) 

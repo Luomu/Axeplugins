@@ -25,6 +25,7 @@ void DefineACES(MicroAceTime* at)
 	// Format:
 	// ADDCND(List name, Category, Display string, Function address, Script name, Flags)
 	//ADDCND("My condition", "My category", "%o My condition", &ExtObject::cMyCondition, "MyCondition", 0);
+	ADDCND("Error occurred", "Utils", "%o Error occurred", &ExtObject::cErrorOccurred, "ErrorOccurred", 0);
 
 	/////////////////////////////
 	// Actions
@@ -71,6 +72,8 @@ void DefineACES(MicroAceTime* at)
 	ADDEXP("Object name", "Rooms", "ObjectName", &ExtObject::eObjectName, RETURN_STRING);
 	ADDPARAM(PARAM_VALUE, "Object number", "1-n");
 	ADDEXP("Object XData", "Rooms", "ObjectXData", &ExtObject::eObjectXData, RETURN_STRING);
+
+	ADDEXP("Get last error string", "Utils", "GetLastErrorString", &ExtObject::eErrorString, RETURN_STRING);
 
 	// This line includes your common ACEs as specified in Main.h
 #include "..\Common\CommonAceTable.hpp"

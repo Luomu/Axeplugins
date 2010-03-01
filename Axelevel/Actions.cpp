@@ -14,18 +14,22 @@ long ExtObject::aSaveRoom( LPVAL params )
 		std::ofstream ofs(params[0].GetString());
 		boost::archive::text_oarchive oa(ofs);
 		oa << roomObjects;
-		return 0;
 	} catch(...) {
-		pRuntime->AddDebugLogMessage("Save error");
-		return 0;
+		RaiseConstructError("Error trying to save " + params[0].GetString());
+		
 	}
+	return 0;
 }
 
 long ExtObject::aLoadRoom( LPVAL params )
 {
-	std::ifstream ifs(params[0].GetString());
-	boost::archive::text_iarchive ia(ifs);
-	ia >> roomObjects;
+	try {
+		std::ifstream ifs(params[0].GetString());
+		boost::archive::text_iarchive ia(ifs);
+		ia >> roomObjects;
+	} catch(...) {
+		RaiseConstructError("Error trying to load " + params[0].GetString());
+	}
 	return 0;
 }
 
