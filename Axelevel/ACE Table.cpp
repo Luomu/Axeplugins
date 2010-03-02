@@ -40,6 +40,12 @@ void DefineACES(MicroAceTime* at)
 	ADDACT("Clear room data", "Rooms", "Clear room data", &ExtObject::aClearData, "ClearRoomData", 0);
 	ADDPARAM(PARAM_STRING, "Data string", "|-delimited string. See docs!");
 	ADDACT("Add object from string", "Rooms", "Add %0 as string to objects", &ExtObject::aAddObjectString, "AddObjectString", 0);
+	ADDPARAM(PARAM_STRING, "File name", "File to save to");
+	ADDPARAM(PARAM_VALUE, "X", "X position");
+	ADDPARAM(PARAM_VALUE, "Y", "Y position");
+	ADDPARAM(PARAM_VALUE, "Angle", "Rotation");
+	ADDACT("Load and create room", "Rooms", "Load room %0 and create at %1 %2, rot %3",
+		   &ExtObject::aLoadAndCreateRoom, "LoadAndCreateRoom", 0);
 
 	//Room saving
 	ADDPARAM(PARAM_VALUE, "Type", "0=Sprite, 1=Tiled");

@@ -98,3 +98,61 @@ long ExtObject::aAddRoom( LPVAL params )
 {
 	return 0;
 }
+
+// Load and create a room at position
+long ExtObject::aLoadAndCreateRoom( LPVAL params )
+{
+	int xoff = params[1].GetInt();
+	int yoff = params[2].GetInt();
+	int rangle = params[3].GetInt();
+
+	try {
+		std::ifstream ifs(params[0].GetString());
+		boost::archive::text_iarchive ia(ifs);
+		ia >> roomObjects;
+	}catch(...) {
+		RaiseConstructError("Error trying to load " + params[0].GetString());
+		return 0;
+	}
+	/*CRunObjType* ot = pRuntime->GetTypeFromName("block_wall");
+	CRunLayer* l = pRuntime->GetLayer(pLayout, "Common");
+	CRunObject* o = pRuntime->CreateObject(ot, l->number, pLayout);
+
+	o->info.x = 40;
+	o->info.y = 50;
+	o->info.angle = 33;
+	pRuntime->UpdateBoundingBox(o);*/
+	try {
+		if(roomObjects.empty())
+			throw "No room loaded.";
+		
+		//go through objects
+		vector<RoomObject>::iterator ro;
+		ro = roomObjects.begin();
+		while(ro != roomObjects.end()) {
+			CRunObjType* ot = pRuntime->GetTypeFromName(ro->name.c_str());
+			if(ot == NULL) throw "No matching object type.";
+
+			CRunLayer* l = pRuntime->GetLayer(pLayout, "Common");
+			if(l == NULL) throw "No layer Common found.";
+
+			CRunObject* o = pRuntime->CreateObject(ot, l->number, pLayout);
+			if(o == NULL) throw "Error while creating object.";
+
+			o->info.x = ro->xpos + xoff;
+			o->info.y = ro->ypos + yoff;
+			if(ro->width > 0 && ro->height > 0) {
+				o->info.w = ro->width;
+				o->info.h = ro->height;
+			}
+			pRuntime->UpdateBoundingBox(o);
+
+			++ro;
+		}
+	} catch(char* str) {
+		RaiseConstructError(str);
+	} catch(...) {
+		RaiseConstructError("Unknown error while attempting to recreate objects.");
+	}
+	return 0;
+}

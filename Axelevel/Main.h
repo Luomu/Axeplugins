@@ -87,6 +87,7 @@ public:
 	long aLoadLevel(LPVAL params);
 	long aClearLevelData(LPVAL params);
 	long aAddRoom(LPVAL params);
+	long aLoadAndCreateRoom(LPVAL params);
 
 	//long eMyExpression(LPVAL params, ExpReturn& ret);
 	long eObjectCount(LPVAL params, ExpReturn& ret);
