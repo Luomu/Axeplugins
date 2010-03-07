@@ -47,7 +47,7 @@ typedef void*					FontHandle;
 #include "..\Common\VEdittime.h"
 #include "..\Common\Rundefs.h"
 #include "..\Common\VRuntime.h"
-
+#include "Exceptions.h"
 
 // Global SDK definitions
 #include "..\Common\SDKdefs.h"

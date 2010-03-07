@@ -21,7 +21,15 @@ public:
 		return(_items.begin());
 	}
 
+	iterator begin() {
+		return(_items.begin());
+	}
+
 	const_iterator end() const {
+		return(_items.end());
+	}
+
+	iterator end() {
 		return(_items.end());
 	}
 
@@ -32,6 +40,7 @@ public:
 	void add(InventoryItem& itm) {
 		itm._id = _idcounter;
 		++_idcounter;
+		itm.setLocation(0);
 		_items.push_back(itm);
 	}
 

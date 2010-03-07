@@ -47,6 +47,11 @@ void DefineACES(MicroAceTime* at)
 	ADDPARAM(PARAM_VALUE, "Item ID", "Identifier of item to remove");
 	ADDACT("Remove item", "Player inventory", "Remove item %0", &ExtObject::aRemoveItem, "RemoveItem", 0);
 
+	ADDPARAM(PARAM_VALUE, "Item ID", "Item identifier");
+	ADDPARAM(PARAM_VALUE, "Location ID", "0=Storage 1=Slot1 2=Slot2");
+	ADDACT("Equip item", "Player inventory", "Equip item %0 in %1",
+		&ExtObject::aEquipItem, "EquipItem", 0);
+
 	ADDCND("Error occurred", "Utils", "%o Error occurred", &ExtObject::cErrorOccurred, "ErrorOccurred", 0);
 
 	/////////////////////////////

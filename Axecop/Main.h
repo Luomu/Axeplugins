@@ -109,6 +109,7 @@ public:
 	// Inventory actions
 	long aAddItem(LPVAL params);
 	long aRemoveItem(LPVAL params);
+	long aEquipItem(LPVAL params);
 
 	// Inventory expressions
 	long eItemCount(LPVAL params, ExpReturn& ret);

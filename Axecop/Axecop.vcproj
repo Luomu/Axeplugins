@@ -84,7 +84,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="C:\Program Files\Scirra\Construct9982\Plugins\Axecop.csx"
+				OutputFile="C:\Program Files\Scirra\Construct9983\Plugins\Axecop.csx"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				IgnoreAllDefaultLibraries="false"
@@ -195,7 +195,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="C:\Program Files\Scirra\Construct9982\Plugins\Runtime\Axecop.csx"
+				OutputFile="C:\Program Files\Scirra\Construct9983\Plugins\Runtime\Axecop.csx"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				IgnoreAllDefaultLibraries="false"
@@ -813,6 +813,10 @@
 			>
 			<File
 				RelativePath="ConstructSDK.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Exceptions.h"
 				>
 			</File>
 			<File

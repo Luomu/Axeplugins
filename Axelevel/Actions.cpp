@@ -145,6 +145,8 @@ long ExtObject::aLoadAndCreateRoom( LPVAL params )
 				o->info.w = ro->width;
 				o->info.h = ro->height;
 			}
+			if(ro->angle != 0)
+				o->info.angle = ro->angle;
 			pRuntime->UpdateBoundingBox(o);
 
 			++ro;

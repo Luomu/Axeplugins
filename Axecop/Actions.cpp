@@ -96,15 +96,76 @@ long ExtObject::aAddItem(LPVAL params)
 
 long ExtObject::aRemoveItem( LPVAL params)
 {
-	int idx = params[0].GetInt() - 1;
-	if(idx < 0 || idx > playerInventory.size())
-		return 0;
+	int idx = params[0].GetInt();
+
+	int itemsRemoved = 0;
 
 	try {
-		playerInventory.erase(playerInventory.begin() + idx);
+		vector<InventoryItem>::iterator it;
+		it = playerInventory.begin();
+		while(it != playerInventory.end()) {
+			if(it->id() == idx) {
+				playerInventory.erase(it);
+				++itemsRemoved;
+				break;
+			}
+			++it;
+		}
+		if(itemsRemoved == 0)
+			throw Axception("Nothing was removed");
+		if(itemsRemoved > 1)
+			throw Axception("More than one item were removed");
 	}
 	catch (out_of_range oor) {
 		RaiseConstructError("Out of range attempt");
 	}
+	catch(Axception& ae)
+	{
+		RaiseConstructError(ae.what());
+	}
+	catch(...) {
+		RaiseConstructError("Unknown error while removing item");
+	}
+	return 0;
+}
+
+
+long ExtObject::aEquipItem( LPVAL params )
+{
+	int itmToEquip = params[0].GetInt();
+	int locationId = params[1].GetInt();
+
+	int success = 0;
+
+	try
+	{
+		if(locationId < 0 || locationId > 2 )
+			throw Axception("No such location to equip in");
+		//find out if location is already used
+		vector<InventoryItem>::iterator it;
+		it = playerInventory.begin();
+		while(it != playerInventory.end()) {
+			if(it->location() == locationId)
+				it->setLocation(0);
+			if(it->id() == itmToEquip) {
+				it->setLocation(locationId);
+				success++;
+			}
+			++it;
+		}
+		if(success == 0)
+			throw Axception("No item was equipped");
+		if(success > 1)
+			throw Axception("Item was equipped more than once, what");
+	}
+	catch(Axception& ae)
+	{
+		RaiseConstructError(ae.what());
+	}
+	catch(...)
+	{
+		RaiseConstructError("Unknown error while equipping item");
+	}
+
 	return 0;
 }
