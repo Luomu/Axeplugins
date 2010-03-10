@@ -89,6 +89,8 @@ public:
 	// Generate a new set of missions
 	long aGenerateMissions(LPVAL params);
 
+	long aSetInventoryItemValue(LPVAL params);
+
 	long cErrorOccurred(LPVAL params);
 	long eErrorString(LPVAL params, ExpReturn& ret);
 
@@ -114,6 +116,8 @@ public:
 	// Inventory expressions
 	long eItemCount(LPVAL params, ExpReturn& ret);
 	long eInventoryItemString(LPVAL params, ExpReturn& ret);
+
+	long eInventoryItemValue(LPVAL params, ExpReturn& ret);
 
 	////////////////////////////////////////////////////
 	// Data members

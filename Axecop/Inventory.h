@@ -33,6 +33,16 @@ public:
 		return(_items.end());
 	}
 
+	InventoryItem* operator[](const int& k) {
+		for(int i = 0; i < _items.size(); ++i) {
+			if(_items.at(i).id() == k)
+				return &_items.at(i);
+		}
+		return 0;
+	}
+
+	InventoryItem* lastItem();
+
 	int size() const {
 		return _items.size();
 	}

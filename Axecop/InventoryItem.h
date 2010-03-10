@@ -14,6 +14,11 @@ public:
 	int id() { return _id; }
 	int location() { return _location; }
 	void setLocation(const int loc) { _location = loc; }
+	const std::string& name() { return _name; }
+	int value() const { return _value; }
+	void setName(const std::string&);
+	void setName(const ATL::CString&);
+	void setValue(const int);
 private:
 	friend class boost::serialization::access;
 	int _id;

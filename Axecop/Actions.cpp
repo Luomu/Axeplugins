@@ -169,3 +169,26 @@ long ExtObject::aEquipItem( LPVAL params )
 
 	return 0;
 }
+
+long ExtObject::aSetInventoryItemValue(LPVAL params)
+{
+	InventoryItem* itm;
+	if(params[0].GetInt() == 0)
+		itm = playerInventory.lastItem();
+	else
+		itm = playerInventory[params[0].GetInt()];
+
+	if(itm == 0)
+		return 0;
+
+	CString pn = params[1].GetString();
+
+	if(pn == _T("name"))
+		itm->setName(params[2].GetString());
+	else if(pn == _T("value"))
+		itm->setValue(params[2].GetInt());
+	else
+		RaiseConstructError("No such item property.");
+
+	return 0;
+}

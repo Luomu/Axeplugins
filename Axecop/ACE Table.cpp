@@ -52,6 +52,12 @@ void DefineACES(MicroAceTime* at)
 	ADDACT("Equip item", "Player inventory", "Equip item %0 in %1",
 		&ExtObject::aEquipItem, "EquipItem", 0);
 
+	ADDPARAM(PARAM_VALUE, "Item ID", "Inventory item identifier");
+	ADDPARAM(PARAM_STRING, "Property name", "Item property name");
+	ADDPARAM(PARAM_VALUE, "New value", "New value for the property");
+	ADDACT("Set item property", "Player inventory", "Set %1 in item %0 to %2",
+		&ExtObject::aSetInventoryItemValue, "SetItemProperty", 0);
+
 	ADDCND("Error occurred", "Utils", "%o Error occurred", &ExtObject::cErrorOccurred, "ErrorOccurred", 0);
 
 	/////////////////////////////
@@ -76,6 +82,10 @@ void DefineACES(MicroAceTime* at)
 
 	ADDPARAM(PARAM_VALUE, "Item index", "Item to return as | delimited string (1-n)");
 	ADDEXP("Item string", "Player inventory", "InventoryItemString", &ExtObject::eInventoryItemString, RETURN_STRING);
+
+	ADDPARAM(PARAM_VALUE, "Item ID", "Inventory item identifier");
+	ADDPARAM(PARAM_STRING, "Property name", "Item property name");
+	ADDEXP("Item property", "Player inventory", "ItemProperty", &ExtObject::eInventoryItemValue, 0);
 
 	// This line includes your common ACEs as specified in Main.h
 #include "..\Common\CommonAceTable.hpp"

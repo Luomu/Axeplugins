@@ -28,3 +28,18 @@ CString InventoryItem::toString() const
 	str.Format("%d|%s|%d", _id, _name.c_str(), _location);
 	return str;
 }
+
+void InventoryItem::setName(const std::string& newname)
+{
+	_name = newname;
+}
+
+void InventoryItem::setName(const ATL::CString& newname)
+{
+	_name = newname;
+}
+
+void InventoryItem::setValue(const int newvalue)
+{
+	_value = newvalue;
+}

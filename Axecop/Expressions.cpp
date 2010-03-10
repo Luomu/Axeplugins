@@ -92,3 +92,35 @@ long ExtObject::eErrorString( LPVAL params, ExpReturn& ret )
 {
 	return ret.ReturnString(pRuntime, errorString);
 }
+
+
+long ExtObject::eInventoryItemValue( LPVAL params, ExpReturn& ret )
+{
+	InventoryItem* itm = playerInventory[params[0].GetInt()];
+
+	if(itm == 0)
+		return ret = 0;
+
+	CString pn = params[1].GetString();
+
+	if(pn == _T("name"))
+		return ret.ReturnString(pRuntime, itm->name().c_str());
+	else if(pn == _T("id"))
+		return ret = itm->id();
+	else if(pn == _T("value"))
+		return ret = itm->value();
+	else if(pn == _T("location"))
+		return ret = itm->location();
+	else if(pn == _T("description"))
+		return ret.ReturnString(pRuntime, "No description");
+	else if(pn == _T("type"))
+		return ret = 0;
+	else if(pn == _T("condition"))
+		return ret = 100;
+	else if(pn == _T("appearance"))
+		return ret = 0;
+	else if(pn == _T("color"))
+		return ret = 0;
+	
+	return ret = 0;
+}
