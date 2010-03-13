@@ -118,9 +118,9 @@ long ExtObject::eInventoryItemValue( LPVAL params, ExpReturn& ret )
 	else if(pn == _T("condition"))
 		return ret = 100;
 	else if(pn == _T("appearance"))
-		return ret = 0;
-	else if(pn == _T("color"))
-		return ret = 0;
+		return ret = itm->appearance();
+	else if(pn == _T("colour"))
+		return ret = itm->colour();
 	
 	return ret = 0;
 }

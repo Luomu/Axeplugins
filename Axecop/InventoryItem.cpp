@@ -5,7 +5,9 @@ InventoryItem::InventoryItem() :
 	_id(-1),
 	_name("Nothing"),
 	_value(0),
-	_location(-1)
+	_location(-1),
+	_appearance(0),
+	_colour(16777215)
 {
 
 }
@@ -14,7 +16,9 @@ InventoryItem::InventoryItem(const CString& name) :
 	_id(-1),
 	_name(name),
 	_value(100),
-	_location(-1)
+	_location(-1),
+	_appearance(1),
+	_colour(16777215)
 {
 
 }
@@ -42,4 +46,14 @@ void InventoryItem::setName(const ATL::CString& newname)
 void InventoryItem::setValue(const int newvalue)
 {
 	_value = newvalue;
+}
+
+void InventoryItem::setAppearance(const int newa)
+{
+	_appearance = newa;
+}
+
+void InventoryItem::setColour(const int newc)
+{
+	_colour = newc;
 }

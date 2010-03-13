@@ -19,18 +19,26 @@ public:
 	void setName(const std::string&);
 	void setName(const ATL::CString&);
 	void setValue(const int);
+	int appearance() const { return _appearance; }
+	void setAppearance(const int);
+	int colour() const { return _colour; }
+	void setColour(const int);
 private:
 	friend class boost::serialization::access;
 	int _id;
 	std::string _name;
 	int _value;
 	int _location; //storage, backpack, slot1, slot2...
+	int _appearance; //frame number, basically
+	int _colour; // 0 = black 2^32 = white
 	template<class Archive>
 	void serialize(Archive& ar, const unsigned int version) {
 		ar & _id;
 		ar & _name;
 		ar & _value;
 		ar & _location;
+		ar & _appearance;
+		ar & _colour;
 	}
 };
 #endif // InventoryItem_h__

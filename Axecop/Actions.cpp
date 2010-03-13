@@ -139,7 +139,7 @@ long ExtObject::aEquipItem( LPVAL params )
 
 	try
 	{
-		if(locationId < 0 || locationId > 2 )
+		if(locationId < 0 || locationId > 3 )
 			throw Axception("No such location to equip in");
 		//find out if location is already used
 		vector<InventoryItem>::iterator it;
@@ -187,6 +187,10 @@ long ExtObject::aSetInventoryItemValue(LPVAL params)
 		itm->setName(params[2].GetString());
 	else if(pn == _T("value"))
 		itm->setValue(params[2].GetInt());
+	else if(pn == _T("appearance"))
+		itm->setAppearance(params[2].GetInt());
+	else if(pn == _T("colour"))
+		itm->setColour(params[2].GetInt());
 	else
 		RaiseConstructError("No such item property.");
 
