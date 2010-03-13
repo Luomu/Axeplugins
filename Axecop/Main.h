@@ -76,6 +76,7 @@ public:
 #include "..\Common\CommonAceDecl.hpp"
 
 	//long cMyCondition(LPVAL params);
+	long cForEachItem(LPVAL params);
 
 	//long aMyAction(LPVAL params);
 	// Save all persistent data to a file
@@ -90,6 +91,7 @@ public:
 	long aGenerateMissions(LPVAL params);
 
 	long aSetInventoryItemValue(LPVAL params);
+	long aClearData(LPVAL params);
 
 	long cErrorOccurred(LPVAL params);
 	long eErrorString(LPVAL params, ExpReturn& ret);
@@ -118,6 +120,7 @@ public:
 	long eInventoryItemString(LPVAL params, ExpReturn& ret);
 
 	long eInventoryItemValue(LPVAL params, ExpReturn& ret);
+	long eCurrentInventoryItem(LPVAL params, ExpReturn& ret);
 
 	////////////////////////////////////////////////////
 	// Data members
@@ -129,6 +132,7 @@ public:
 	Inventory playerInventory;
 	bool unprocessedErrors;
 	CString errorString;
+	Inventory::iterator currentItem;
 };
 //////////// EDITTIME INFO ////////////
 class EditExt

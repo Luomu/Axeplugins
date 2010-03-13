@@ -25,6 +25,7 @@ void DefineACES(MicroAceTime* at)
 	// Format:
 	// ADDCND(List name, Category, Display string, Function address, Script name, Flags)
 	//ADDCND("My condition", "My category", "%o My condition", &ExtObject::cMyCondition, "MyCondition", 0);
+	ADDCND("For each item", "Player inventory", "%o For each item", &ExtObject::cForEachItem, "ForEachItem", SOL_MODIFIER);
 
 	/////////////////////////////
 	// Actions
@@ -58,6 +59,8 @@ void DefineACES(MicroAceTime* at)
 	ADDACT("Set item property", "Player inventory", "Set %1 in item %0 to %2",
 		&ExtObject::aSetInventoryItemValue, "SetItemProperty", 0);
 
+	ADDACT("Clear data", "Data", "Clear data", &ExtObject::aClearData, "ClearData", 0);
+
 	ADDCND("Error occurred", "Utils", "%o Error occurred", &ExtObject::cErrorOccurred, "ErrorOccurred", 0);
 
 	/////////////////////////////
@@ -86,6 +89,8 @@ void DefineACES(MicroAceTime* at)
 	ADDPARAM(PARAM_VALUE, "Item ID", "Inventory item identifier");
 	ADDPARAM(PARAM_STRING, "Property name", "Item property name");
 	ADDEXP("Item property", "Player inventory", "ItemProperty", &ExtObject::eInventoryItemValue, 0);
+
+	ADDEXP("Current item", "Player inventory", "CurrItem", &ExtObject::eCurrentInventoryItem, SOL_MODIFIER);
 
 	// This line includes your common ACEs as specified in Main.h
 #include "..\Common\CommonAceTable.hpp"

@@ -33,6 +33,8 @@ public:
 		return(_items.end());
 	}
 
+	bool empty() { return _items.empty(); }
+
 	InventoryItem* operator[](const int& k) {
 		for(int i = 0; i < _items.size(); ++i) {
 			if(_items.at(i).id() == k)
@@ -64,6 +66,8 @@ public:
 			return oor.what();
 		}
 	}
+
+	void clear();
 private:
 	friend class boost::serialization::access;
 	std::vector<InventoryItem> _items;

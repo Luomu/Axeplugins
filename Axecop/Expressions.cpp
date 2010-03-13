@@ -124,3 +124,11 @@ long ExtObject::eInventoryItemValue( LPVAL params, ExpReturn& ret )
 	
 	return ret = 0;
 }
+
+long ExtObject::eCurrentInventoryItem(LPVAL params, ExpReturn& ret)
+{
+	if(playerInventory.empty())
+		return ret = 0;
+
+	return ret = currentItem->id();
+}

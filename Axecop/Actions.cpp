@@ -192,3 +192,11 @@ long ExtObject::aSetInventoryItemValue(LPVAL params)
 
 	return 0;
 }
+
+long ExtObject::aClearData(LPVAL params)
+{
+	missions.clear();
+	sectors.clear();
+	playerInventory.clear();
+	return 0;
+}
