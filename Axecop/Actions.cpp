@@ -191,6 +191,8 @@ long ExtObject::aSetInventoryItemValue(LPVAL params)
 		itm->setAppearance(params[2].GetInt());
 	else if(pn == _T("colour"))
 		itm->setColour(params[2].GetInt());
+	else if(pn == _T("location"))
+		itm->setLocation(params[2].GetInt());
 	else
 		RaiseConstructError("No such item property.");
 

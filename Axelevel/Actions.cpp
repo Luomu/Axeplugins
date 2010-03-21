@@ -133,8 +133,8 @@ long ExtObject::aLoadAndCreateRoom( LPVAL params )
 			CRunObjType* ot = pRuntime->GetTypeFromName(ro->name.c_str());
 			if(ot == NULL) throw "No matching object type.";
 
-			CRunLayer* l = pRuntime->GetLayer(pLayout, "Common");
-			if(l == NULL) throw "No layer Common found.";
+			CRunLayer* l = pRuntime->GetLayer(pLayout, "Level");
+			if(l == NULL) throw "No layer Level found.";
 
 			CRunObject* o = pRuntime->CreateObject(ot, l->number, pLayout);
 			if(o == NULL) throw "Error while creating object.";

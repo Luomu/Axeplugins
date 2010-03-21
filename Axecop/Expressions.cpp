@@ -96,7 +96,11 @@ long ExtObject::eErrorString( LPVAL params, ExpReturn& ret )
 
 long ExtObject::eInventoryItemValue( LPVAL params, ExpReturn& ret )
 {
-	InventoryItem* itm = playerInventory[params[0].GetInt()];
+	InventoryItem* itm = 0;
+	if(params[0].GetInt() == 0)
+		itm = &*currentItem;
+	else
+		itm = playerInventory[params[0].GetInt()];
 
 	if(itm == 0)
 		return ret = 0;
