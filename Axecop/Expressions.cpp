@@ -136,3 +136,53 @@ long ExtObject::eCurrentInventoryItem(LPVAL params, ExpReturn& ret)
 
 	return ret = currentItem->id();
 }
+
+long ExtObject::eMissionValue(LPVAL params, ExpReturn &ret)
+{
+	int id = params[0].GetInt() - 1;
+	CString pm = params[1].GetString();
+	Mission* mission = 0;
+	try {
+		mission = &missions.at(id);
+
+		if(pm == _T("sector"))
+			return ret = mission->sector();
+		else if(pm == _T("cost"))
+			return ret = mission->dropCost();
+		else
+			throw Axception("Unknown mission property");
+	}
+	catch (std::out_of_range oor) {
+		RaiseConstructError("Mission ID out of range");
+	}
+	catch (Axception& ax) {
+		RaiseConstructError(ax.what());
+	}
+
+	return ret = 0;
+}
+
+long ExtObject::eSectorProperty(LPVAL params, ExpReturn &ret)
+{
+	int id = params[0].GetInt() - 1;
+	CString pm = params[1].GetString();
+	Sector* sector = 0;
+	try {
+		sector = &sectors.at(id);
+
+		if(pm == _T("name"))
+			return ret.ReturnString(pRuntime, sector->sectorName().c_str());
+		else if(pm == _T("difficulty"))
+			return ret = sector->difficulty();
+		else
+			throw Axception("Unknown mission property");
+	}
+	catch (std::out_of_range oor) {
+		RaiseConstructError("No such sector");
+	}
+	catch (Axception& ax) {
+		RaiseConstructError(ax.what());
+	}
+
+	return ret = 0;
+}

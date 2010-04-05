@@ -92,6 +92,14 @@ void DefineACES(MicroAceTime* at)
 
 	ADDEXP("Current item", "Player inventory", "CurrItem", &ExtObject::eCurrentInventoryItem, SOL_MODIFIER);
 
+	ADDPARAM(PARAM_VALUE, "Mission ID", "Mission ID (number)");
+	ADDPARAM(PARAM_STRING, "Property name", "Mission property name");
+	ADDEXP("Mission property", "Missions", "MissionProperty", &ExtObject::eMissionValue, 0);
+
+	ADDPARAM(PARAM_VALUE, "Sector ID", "Sector ID (number)");
+	ADDPARAM(PARAM_STRING, "Property name", "Sector property name");
+	ADDEXP("Sector property", "Sectors", "SectorProperty", &ExtObject::eSectorProperty, 0);
+
 	// This line includes your common ACEs as specified in Main.h
 #include "..\Common\CommonAceTable.hpp"
 }

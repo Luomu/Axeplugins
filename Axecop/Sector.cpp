@@ -5,14 +5,14 @@ Sector::Sector(int newid) :
 	_id(newid),
 	name(axeutils::randomLine("data\\sectornames.txt")),
 	capability(static_cast<int>(axeutils::random(1,6))),
-	difficulty(static_cast<int>(axeutils::random(1,6)))
+	_difficulty(static_cast<int>(axeutils::random(1,6)))
 {}
 
 Sector::Sector() :
 	_id(-1),
 	name("Undefined"),
 	capability(0),
-	difficulty(0)
+	_difficulty(0)
 {
 
 }
@@ -20,6 +20,6 @@ Sector::Sector() :
 CString Sector::toString()
 {
 	CString str;
-	str.Format(_T("%s|%d|%d"), name.c_str(), capability, difficulty);
+	str.Format(_T("%s|%d|%d"), name.c_str(), capability, _difficulty);
 	return str;
 }

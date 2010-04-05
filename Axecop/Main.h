@@ -102,10 +102,14 @@ public:
 	// Get mission information as a |-separated string for lazy hacks
 	long eMissionString(LPVAL params, ExpReturn& ret);
 	long eDropCost(LPVAL params, ExpReturn& ret);
+	// Retrieve mission value with id and keyword
+	long eMissionValue(LPVAL params, ExpReturn& ret);
 
 	long eNumSectors(LPVAL params, ExpReturn& ret);
 	// Get sector information as a |-separated string for lazy hacks
 	long eSectorString(LPVAL params, ExpReturn& ret);
+	// The nicer way
+	long eSectorProperty(LPVAL params, ExpReturn& ret);
 
 	// Get random file from a text file
 	long eRandomLine(LPVAL params, ExpReturn& ret);

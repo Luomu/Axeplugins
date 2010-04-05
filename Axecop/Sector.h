@@ -11,19 +11,21 @@ public:
 	Sector(int newid);
 	CString toString();
 	int id() const { return _id; }
+	std::string sectorName() const { return name; }
+	int difficulty() const { return _difficulty; }
 private:
 	friend class boost::serialization::access;
 	int _id;
-	string name;
+	std::string name;
 	int capability;
-	int difficulty;
+	int _difficulty;
 	template<class Archive>
 	void serialize(Archive& ar, const unsigned int version)
 	{
 		ar & _id;
 		ar & name;
 		ar & capability;
-		ar & difficulty;
+		ar & _difficulty;
 	}
 };
 
