@@ -68,6 +68,7 @@ public:
 	}
 
 	void clear();
+	void loadItem(const std::string& fname);
 private:
 	friend class boost::serialization::access;
 	std::vector<InventoryItem> _items;

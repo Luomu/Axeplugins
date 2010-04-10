@@ -206,3 +206,20 @@ long ExtObject::aClearData(LPVAL params)
 	playerInventory.clear();
 	return 0;
 }
+
+// Load item from an .item file
+long ExtObject::aLoadItem(LPVAL params)
+{
+	try {
+		playerInventory.loadItem(std::string(params[0].GetString()));
+		playerInventory.lastItem()->setLocation(params[1].GetInt());
+	}
+	catch(Axception& ae) {
+		RaiseConstructError(ae.what());
+	}
+	catch(std::exception& se) {
+		RaiseConstructError(se.what());
+	}
+
+	return 0;
+}

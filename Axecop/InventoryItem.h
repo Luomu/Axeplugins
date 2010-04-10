@@ -10,6 +10,7 @@ class InventoryItem
 public:
 	InventoryItem();
 	InventoryItem(const CString&);
+	InventoryItem(std::map<std::string, std::string>&);
 	CString toString() const;
 	int id() { return _id; }
 	int location() { return _location; }

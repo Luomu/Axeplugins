@@ -100,6 +100,10 @@ void DefineACES(MicroAceTime* at)
 	ADDPARAM(PARAM_STRING, "Property name", "Sector property name");
 	ADDEXP("Sector property", "Sectors", "SectorProperty", &ExtObject::eSectorProperty, 0);
 
+	ADDPARAM(PARAM_STRING, "File name", ".item file to load, with full path");
+	ADDPARAM(PARAM_VALUE, "Location", "Location identifier for the new item");
+	ADDACT("Load item", "Player inventory", "Load item %0 into %1", &ExtObject::aLoadItem, "LoadItem", 0);
+
 	// This line includes your common ACEs as specified in Main.h
 #include "..\Common\CommonAceTable.hpp"
 }
