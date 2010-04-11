@@ -70,11 +70,13 @@ public:
 #include "..\Common\CommonAceDecl.hpp"
 
 	//long cMyCondition(LPVAL params);
+	long cUpdated(LPVAL params);
 
 	//long aMyAction(LPVAL params);
 	long aAddLine(LPVAL params);
 	long aSave(LPVAL params);
 	long aLoad(LPVAL params);
+	long aClear(LPVAL params);
 
 	//long eMyExpression(LPVAL params, ExpReturn& ret);
 	long eGetMessages(LPVAL params, ExpReturn& ret);
@@ -83,6 +85,7 @@ public:
 	////////////////////////////////////////////////////
 	// Data members
 	CStringArray messages;
+	bool newUpdates;
 
 	// Use when private variables (OF_PRIVATEVARIABLES) are enabled.
 };

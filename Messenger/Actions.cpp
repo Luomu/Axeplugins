@@ -7,6 +7,7 @@
 long ExtObject::aAddLine(LPVAL params)
 {
 	messages.Add(params[0].GetString());
+	newUpdates = true;
 	return 0;
 }
 
@@ -24,6 +25,7 @@ long ExtObject::aLoad(LPVAL params)
 		messages.Add(buffer);
 	}
 	file.Close();
+	newUpdates = true;
 	return 0;
 }
 
@@ -44,5 +46,12 @@ long ExtObject::aSave(LPVAL params)
 	}
 	file.Close();
 
+	return 0;
+}
+
+long ExtObject::aClear(LPVAL params)
+{
+	messages.RemoveAll();
+	newUpdates = true;
 	return 0;
 }

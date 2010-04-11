@@ -23,6 +23,7 @@ ExtObject::ExtObject(initialObject* editObject, VRuntime* pVRuntime)
 // up your object here so it is safe to make runtime calls.
 void ExtObject::OnCreate()
 {
+	newUpdates = false;
 	// Load the edittime data that was serialized.
 	bin ar;
 	ar.attach(info.editObject->eData, info.editObject->eSize);

@@ -25,6 +25,7 @@ void DefineACES(MicroAceTime* at)
 	// Format:
 	// ADDCND(List name, Category, Display string, Function address, Script name, Flags)
 	//ADDCND("My condition", "My category", "%o My condition", &ExtObject::cMyCondition, "MyCondition", 0);
+	ADDCND("Updated", "Messages", "%o Updated", &ExtObject::cUpdated, "Updated", 0);
 
 	/////////////////////////////
 	// Actions
@@ -34,12 +35,14 @@ void DefineACES(MicroAceTime* at)
 	//ADDACT("My action", "My category", "Example action (%0)", &ExtObject::aMyAction, "MyAction", 0);
 	ADDPARAM(PARAM_STRING, "Message", "Message to add");
 	//ADDPARAM(PARAM_STRING, "Tag", "Tag to categorize the message");
-	ADDACT("Add", "Messages", "Add %0 (%1)", &ExtObject::aAddLine, "Add", 0);
+	ADDACT("Add", "Messages", "Add %0", &ExtObject::aAddLine, "Add", 0);
 
 	ADDPARAM(PARAM_STRING, "File", "File to save to");
 	ADDACT("Save to file", "Data", "Save to %0", &ExtObject::aSave, "Save", 0);
 	ADDPARAM(PARAM_STRING, "File", "File to load from");
 	ADDACT("Load from file", "Data", "Load from %0", &ExtObject::aLoad, "Load", 0);
+
+	ADDACT("Clear", "Data", "Clear", &ExtObject::aClear, "Clear", 0);
 
 	/////////////////////////////
 	// Expressions
