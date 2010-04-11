@@ -82,7 +82,7 @@ public:
 
 	////////////////////////////////////////////////////
 	// Data members
-	CStringList messages;
+	CStringArray messages;
 
 	// Use when private variables (OF_PRIVATEVARIABLES) are enabled.
 };

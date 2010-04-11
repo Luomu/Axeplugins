@@ -24,12 +24,37 @@ long ExtObject::ReturnUndefinedExpression(CString& expName, LPVAL theParams, Exp
 //////////////////////////////////////////////////////////////////////////////////
 // Expressions
 //////////////////////////////////////////////////////////////////////////////////
+static int clamp(int x, int min, int max)
+{
+	if(x > max)
+		x = max;
+	else if(x < min)
+		x = min;
+	return x;
+}
+
 long ExtObject::eGetMessages(LPVAL params, ExpReturn& ret)
 {
-	return ret.ReturnString(pRuntime, "Hello world");
+	if(messages.IsEmpty())
+		return ret.ReturnString(pRuntime, "");
+
+	int start = clamp(params[0].GetInt() - 1, 0, messages.GetUpperBound());
+	int end = clamp(params[1].GetInt() - 1, 0, messages.GetUpperBound());
+
+	CString result;
+	if(start < end) {
+		for(int i = start; i <= end; ++i) {
+			result = result + messages[i] + "\n";
+		}
+	} else {
+		for(int i = start; i >= end; --i) {
+			result = + result + messages[i] + "\n";
+		}
+	}
+	return ret.ReturnString(pRuntime, result);
 }
 
 long ExtObject::eCount(LPVAL params, ExpReturn &ret)
 {
-	return ret = 0;
+	return ret = messages.GetCount();
 }

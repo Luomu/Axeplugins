@@ -46,8 +46,8 @@ void DefineACES(MicroAceTime* at)
 	// ADDEXP(List name, Category, Display string, Function address, Flags)
 	//ADDEXP("My expression", "My category", "MyExpression", &ExtObject::eMyExpression, RETURN_INTEGER);
 	// This line includes your common ACEs as specified in Main.h
-	ADDPARAM(PARAM_VALUE, "Lower limit", "Last line to retrieve");
-	ADDPARAM(PARAM_VALUE, "Count", "Number of messages to retrieve");
+	ADDPARAM(PARAM_VALUE, "Start", "First line to retrieve");
+	ADDPARAM(PARAM_VALUE, "End", "Last line to retrieve");
 	//ADDPARAM(PARAM_STRING, "Tags", "Only retrieve messages matching tags");
 	ADDEXP("Get messages", "Messages", "GetMessages", &ExtObject::eGetMessages, RETURN_STRING);
 
