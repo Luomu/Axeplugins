@@ -66,11 +66,11 @@ END
 
 STRINGTABLE 
 BEGIN
-    OBJ_NAME                "AxeLevel"
+    OBJ_NAME                "Messenger"
     OBJ_AUTHOR              "K. K."
     OBJ_VERSION             "1.00"
-    OBJ_DESCRIPTION         "Level utility plugin for project Axecop"
-    OBJ_DATE                "Feb 2010"
+    OBJ_DESCRIPTION         "Plugin to ease message logging"
+    OBJ_DATE                "April 2010"
     OBJ_COPYRIGHT           "No copyright"
     OBJ_WEB                 "www.paahdin.com"
     OBJ_EMAIL               "fanmail@paahdin.com"
