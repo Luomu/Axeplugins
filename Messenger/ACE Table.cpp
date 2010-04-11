@@ -32,13 +32,26 @@ void DefineACES(MicroAceTime* at)
 	// ADDCND(List name, Category, Display string, Function address, Script name, Flags)
 	//ADDPARAM(PARAM_VALUE, "Example parameter", "Here is an example parameter.");
 	//ADDACT("My action", "My category", "Example action (%0)", &ExtObject::aMyAction, "MyAction", 0);
+	ADDPARAM(PARAM_STRING, "Message", "Message to add");
+	//ADDPARAM(PARAM_STRING, "Tag", "Tag to categorize the message");
+	ADDACT("Add", "Messages", "Add %0 (%1)", &ExtObject::aAddLine, "Add", 0);
 
-	//Room saving
+	ADDPARAM(PARAM_STRING, "File", "File to save to");
+	ADDACT("Save to file", "Data", "Save to %0", &ExtObject::aSave, "Save", 0);
+	ADDPARAM(PARAM_STRING, "File", "File to load from");
+	ADDACT("Load from file", "Data", "Load from %0", &ExtObject::aLoad, "Load", 0);
+
 	/////////////////////////////
 	// Expressions
 	// ADDEXP(List name, Category, Display string, Function address, Flags)
 	//ADDEXP("My expression", "My category", "MyExpression", &ExtObject::eMyExpression, RETURN_INTEGER);
 	// This line includes your common ACEs as specified in Main.h
+	ADDPARAM(PARAM_VALUE, "Lower limit", "Last line to retrieve");
+	ADDPARAM(PARAM_VALUE, "Count", "Number of messages to retrieve");
+	//ADDPARAM(PARAM_STRING, "Tags", "Only retrieve messages matching tags");
+	ADDEXP("Get messages", "Messages", "GetMessages", &ExtObject::eGetMessages, RETURN_STRING);
+
+	ADDEXP("Count", "Messages", "Count", &ExtObject::eCount, RETURN_VALUE);
 #include "..\Common\CommonAceTable.hpp"
 }
 

@@ -72,11 +72,17 @@ public:
 	//long cMyCondition(LPVAL params);
 
 	//long aMyAction(LPVAL params);
+	long aAddLine(LPVAL params);
+	long aSave(LPVAL params);
+	long aLoad(LPVAL params);
 
 	//long eMyExpression(LPVAL params, ExpReturn& ret);
+	long eGetMessages(LPVAL params, ExpReturn& ret);
+	long eCount(LPVAL params, ExpReturn& ret);
 
 	////////////////////////////////////////////////////
 	// Data members
+	CStringList messages;
 
 	// Use when private variables (OF_PRIVATEVARIABLES) are enabled.
 };

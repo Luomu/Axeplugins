@@ -24,3 +24,12 @@ long ExtObject::ReturnUndefinedExpression(CString& expName, LPVAL theParams, Exp
 //////////////////////////////////////////////////////////////////////////////////
 // Expressions
 //////////////////////////////////////////////////////////////////////////////////
+long ExtObject::eGetMessages(LPVAL params, ExpReturn& ret)
+{
+	return ret.ReturnString(pRuntime, "Hello world");
+}
+
+long ExtObject::eCount(LPVAL params, ExpReturn &ret)
+{
+	return ret = 0;
+}

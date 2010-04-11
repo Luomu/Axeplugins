@@ -20,6 +20,7 @@
 
 #define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
 #include "resource.h"
+#include <afxcoll.h>
 #include <windows.h>
 #include <atlstr.h>
 #include <atltypes.h>
