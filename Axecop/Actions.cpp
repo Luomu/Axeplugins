@@ -139,7 +139,7 @@ long ExtObject::aEquipItem( LPVAL params )
 
 	try
 	{
-		if(locationId < 0 || locationId > 3 )
+		if(locationId < 0)
 			throw Axception("No such location to equip in");
 		//find out if location is already used
 		vector<InventoryItem>::iterator it;
