@@ -22,6 +22,7 @@
 #define IDE_FLAGS 	OF_NOCOMMONDEBUG | OF_NODRAW
 
 #include "..\Common\ExpReturn.hpp"
+#include "message.h"
 
 #define OBJECTRECT CRect(editObject->objectX, editObject->objectY, editObject->objectX + editObject->objectWidth, editObject->objectY + editObject->objectHeight)
 
@@ -74,18 +75,25 @@ public:
 
 	//long aMyAction(LPVAL params);
 	long aAddLine(LPVAL params);
+	long aAddTaggedLine(LPVAL params);
 	long aSave(LPVAL params);
 	long aLoad(LPVAL params);
 	long aClear(LPVAL params);
 
 	//long eMyExpression(LPVAL params, ExpReturn& ret);
 	long eGetMessages(LPVAL params, ExpReturn& ret);
+	long eGetMessagesByTags(LPVAL params, ExpReturn& ret);
 	long eCount(LPVAL params, ExpReturn& ret);
 
 	////////////////////////////////////////////////////
 	// Data members
 	CStringArray messages;
+	CArray<Messenger::Message, Messenger::Message&> taggedMessages;
 	bool newUpdates;
+	//typedef CMap<CString, LPCSTR, bool, bool> tagmap;
+	typedef CStringList tagmap;
+	CString getMessages(const int start, const int end,
+		tagmap* tags);
 
 	// Use when private variables (OF_PRIVATEVARIABLES) are enabled.
 };

@@ -33,28 +33,67 @@ static int clamp(int x, int min, int max)
 	return x;
 }
 
-long ExtObject::eGetMessages(LPVAL params, ExpReturn& ret)
+CString ExtObject::getMessages(const int start, const int end,
+								tagmap* tags = 0)
 {
-	if(messages.IsEmpty())
-		return ret.ReturnString(pRuntime, "");
-
-	int start = clamp(params[0].GetInt() - 1, 0, messages.GetUpperBound());
-	int end = clamp(params[1].GetInt() - 1, 0, messages.GetUpperBound());
-
 	CString result;
 	if(start < end) {
 		for(int i = start; i <= end; ++i) {
-			result = result + messages[i] + "\n";
+			if(tags && tags->Find(taggedMessages[i].tag) != NULL)
+				result = result + taggedMessages[i].text + "\n";
+			else if(!tags)
+				result = result + taggedMessages[i].text + "\n";
 		}
 	} else {
 		for(int i = start; i >= end; --i) {
-			result = + result + messages[i] + "\n";
+			if(tags && tags->Find(taggedMessages[i].tag) != NULL)
+				result = + result + taggedMessages[i].text + "\n";
+			else if(!tags)
+				result = + result + taggedMessages[i].text + "\n";
 		}
 	}
-	return ret.ReturnString(pRuntime, result);
+	return result;
+}
+
+long ExtObject::eGetMessages(LPVAL params, ExpReturn& ret)
+{
+	if(taggedMessages.IsEmpty())
+		return ret.ReturnString(pRuntime, "");
+
+	int start = clamp(params[0].GetInt() - 1, 0, taggedMessages.GetUpperBound());
+	int end = clamp(params[1].GetInt() - 1, 0, taggedMessages.GetUpperBound());
+
+	return ret.ReturnString(pRuntime, getMessages(start, end));
+}
+
+namespace Messenger {
+static void splitTags(const CString& tags, CStringList& result)
+{
+	CString resToken;
+	int curpos = 0;
+	resToken = tags.Tokenize(_T(","), curpos);
+	while(resToken != "") {
+		result.AddTail(resToken);
+		resToken = tags.Tokenize(_T(","), curpos);
+	}
+}
+}
+
+long ExtObject::eGetMessagesByTags(LPVAL params, ExpReturn &ret)
+{
+	if(taggedMessages.IsEmpty())
+		return ret.ReturnString(pRuntime, "");
+
+	int start = clamp(params[0].GetInt() - 1, 0, taggedMessages.GetUpperBound());
+	int end = clamp(params[1].GetInt() - 1, 0, taggedMessages.GetUpperBound());
+
+	CStringList tags;
+	Messenger::splitTags(params[2].GetString(), tags);
+
+	return ret.ReturnString(pRuntime, getMessages(start, end, &tags));
 }
 
 long ExtObject::eCount(LPVAL params, ExpReturn &ret)
 {
-	return ret = messages.GetCount();
+	return ret = taggedMessages.GetCount();
 }

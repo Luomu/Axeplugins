@@ -11,6 +11,14 @@ long ExtObject::aAddLine(LPVAL params)
 	return 0;
 }
 
+long ExtObject::aAddTaggedLine(LPVAL params)
+{
+	taggedMessages.Add(Messenger::Message(params[0].GetString(),
+					   params[1].GetString()));
+	newUpdates = true;
+	return 0;
+}
+
 long ExtObject::aLoad(LPVAL params)
 {
 	CString filename = params[0].GetString();
@@ -31,7 +39,7 @@ long ExtObject::aLoad(LPVAL params)
 
 long ExtObject::aSave(LPVAL params)
 {
-	if(messages.IsEmpty())
+	if(taggedMessages.IsEmpty())
 		return 0;
 
 	CString filename = params[0].GetString();
@@ -39,9 +47,9 @@ long ExtObject::aSave(LPVAL params)
 	if(!file.Open(filename, CFile::modeCreate | CFile::modeWrite | CFile::typeText))
 		return 0;
 
-	for(int i = 0; i <= messages.GetUpperBound(); ++i) {
-		file.WriteString(messages[i]);
-		if(i != messages.GetUpperBound())
+	for(int i = 0; i <= taggedMessages.GetUpperBound(); ++i) {
+		file.WriteString(taggedMessages[i].text);
+		if(i != taggedMessages.GetUpperBound())
 			file.WriteString("\n");
 	}
 	file.Close();
@@ -51,7 +59,7 @@ long ExtObject::aSave(LPVAL params)
 
 long ExtObject::aClear(LPVAL params)
 {
-	messages.RemoveAll();
+	taggedMessages.RemoveAll();
 	newUpdates = true;
 	return 0;
 }

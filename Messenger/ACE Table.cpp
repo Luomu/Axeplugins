@@ -37,6 +37,10 @@ void DefineACES(MicroAceTime* at)
 	//ADDPARAM(PARAM_STRING, "Tag", "Tag to categorize the message");
 	ADDACT("Add", "Messages", "Add %0", &ExtObject::aAddLine, "Add", 0);
 
+	ADDPARAM(PARAM_STRING, "Message", "Message to add");
+	ADDPARAM(PARAM_STRING, "Tag", "Tag to categorize the message");
+	ADDACT("Add tagged", "Messages", "Add %0 (%1)", &ExtObject::aAddTaggedLine, "AddTagged", 0);
+
 	ADDPARAM(PARAM_STRING, "File", "File to save to");
 	ADDACT("Save to file", "Data", "Save to %0", &ExtObject::aSave, "Save", 0);
 	ADDPARAM(PARAM_STRING, "File", "File to load from");
@@ -53,6 +57,11 @@ void DefineACES(MicroAceTime* at)
 	ADDPARAM(PARAM_VALUE, "End", "Last line to retrieve");
 	//ADDPARAM(PARAM_STRING, "Tags", "Only retrieve messages matching tags");
 	ADDEXP("Get messages", "Messages", "GetMessages", &ExtObject::eGetMessages, RETURN_STRING);
+
+	ADDPARAM(PARAM_VALUE, "Start", "First line to retrieve");
+	ADDPARAM(PARAM_VALUE, "End", "Last line to retrieve");
+	ADDPARAM(PARAM_STRING, "Tags", "Only retrieve messages matching tags");
+	ADDEXP("Get messages by tags", "Messages", "GetMessagesByTags", &ExtObject::eGetMessagesByTags, RETURN_STRING);
 
 	ADDEXP("Count", "Messages", "Count", &ExtObject::eCount, RETURN_VALUE);
 #include "..\Common\CommonAceTable.hpp"
