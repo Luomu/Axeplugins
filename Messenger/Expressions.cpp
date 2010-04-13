@@ -36,19 +36,27 @@ static int clamp(int x, int min, int max)
 CString ExtObject::getMessages(const int start, const int end,
 								tagmap* tags = 0)
 {
+	bool getAll = true;
+
+	if(tags != NULL) {
+		getAll = false;
+
+		if(tags->Find("*"))
+			getAll = true;
+	}
 	CString result;
 	if(start < end) {
 		for(int i = start; i <= end; ++i) {
-			if(tags && tags->Find(taggedMessages[i].tag) != NULL)
+			if(!getAll && tags->Find(taggedMessages[i].tag) != NULL)
 				result = result + taggedMessages[i].text + "\n";
-			else if(!tags)
+			else if(getAll)
 				result = result + taggedMessages[i].text + "\n";
 		}
 	} else {
 		for(int i = start; i >= end; --i) {
-			if(tags && tags->Find(taggedMessages[i].tag) != NULL)
+			if(!getAll && tags->Find(taggedMessages[i].tag) != NULL)
 				result = + result + taggedMessages[i].text + "\n";
-			else if(!tags)
+			else if(getAll)
 				result = + result + taggedMessages[i].text + "\n";
 		}
 	}
@@ -67,10 +75,16 @@ long ExtObject::eGetMessages(LPVAL params, ExpReturn& ret)
 }
 
 namespace Messenger {
-static void splitTags(const CString& tags, CStringList& result)
+static void splitTags(CString& tags, CStringList& result)
 {
+	if(tags == "") {
+		result.AddTail("*");
+		return;
+	}
+
 	CString resToken;
 	int curpos = 0;
+	tags.Remove(' ');
 	resToken = tags.Tokenize(_T(","), curpos);
 	while(resToken != "") {
 		result.AddTail(resToken);
