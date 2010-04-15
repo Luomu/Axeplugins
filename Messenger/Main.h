@@ -79,6 +79,7 @@ public:
 	long aSave(LPVAL params);
 	long aLoad(LPVAL params);
 	long aClear(LPVAL params);
+	long aExport(LPVAL params);
 
 	//long eMyExpression(LPVAL params, ExpReturn& ret);
 	long eGetMessages(LPVAL params, ExpReturn& ret);
