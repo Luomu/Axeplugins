@@ -46,9 +46,9 @@ void DefineACES(MicroAceTime* at)
 	ADDPARAM(PARAM_STRING, "File", "File to load from");
 	ADDACT("Load from file", "Data", "Load from %0", &ExtObject::aLoad, "Load", 0);
 	ADDPARAM(PARAM_STRING, "File", "File to save to");
-	ADDACT("Export without tags", "Data", "Export to %0", &ExtObject::aSave, "Export", 0);
+	ADDACT("Export without tags", "Data", "Export to %0", &ExtObject::aExport, "Export", 0);
 	ADDPARAM(PARAM_STRING, "File", "File to load from");
-	ADDACT("Import without tags", "Data", "Import from %0", &ExtObject::aLoad, "Import", 0);
+	ADDACT("Import without tags", "Data", "Import from %0", &ExtObject::aImport, "Import", 0);
 
 	ADDACT("Clear", "Data", "Clear", &ExtObject::aClear, "Clear", 0);
 
