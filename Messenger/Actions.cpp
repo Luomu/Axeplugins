@@ -6,7 +6,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 long ExtObject::aAddLine(LPVAL params)
 {
-	messages.Add(params[0].GetString());
+	taggedMessages.Add(Messenger::Message(params[0].GetString(),
+					   ""));
 	newUpdates = true;
 	return 0;
 }
@@ -19,7 +20,35 @@ long ExtObject::aAddTaggedLine(LPVAL params)
 	return 0;
 }
 
+static Messenger::Message SplitLine(CString& input)
+{
+	Messenger::Message m;
+	int pos = 0;
+	CString token = input.Tokenize(_T("|"), pos);
+	m.tag = token;;
+	m.text = input.Tokenize(_T("|"), pos);
+	return m;
+}
+
 long ExtObject::aLoad(LPVAL params)
+{
+	CString filename = params[0].GetString();
+	CStdioFile file;
+
+	if(!file.Open(filename, CFile::modeRead))
+		return 0;
+
+	CString buffer;
+	messages.RemoveAll();
+	while(file.ReadString(buffer)) {
+		taggedMessages.Add(SplitLine(buffer));
+	}
+	file.Close();
+	newUpdates = true;
+	return 0;
+}
+
+long ExtObject::aImport(LPVAL params)
 {
 	CString filename = params[0].GetString();
 	CStdioFile file;

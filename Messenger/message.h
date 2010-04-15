@@ -13,7 +13,8 @@ namespace Messenger {
 		Message(const CString& newtext, const CString& newtag) :
 			text(newtext),
 			tag(newtag) {
-
+				text.Replace('|', '-');
+				tag.Replace('|', '-');
 			}
 	};
 }
