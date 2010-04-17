@@ -3,6 +3,7 @@
 
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/nvp.hpp>
 
 class InventoryItem
 {
@@ -34,12 +35,13 @@ private:
 	int _colour; // 0 = black 2^32 = white
 	template<class Archive>
 	void serialize(Archive& ar, const unsigned int version) {
-		ar & _id;
-		ar & _name;
-		ar & _value;
-		ar & _location;
-		ar & _appearance;
-		ar & _colour;
+		using boost::serialization::make_nvp;
+		ar & make_nvp("id", _id);
+		ar & make_nvp("name", _name);
+		ar & make_nvp("value", _value);
+		ar & make_nvp("location", _location);
+		ar & make_nvp("appearance", _appearance);
+		ar & make_nvp("colour", _colour);
 	}
 };
 #endif // InventoryItem_h__

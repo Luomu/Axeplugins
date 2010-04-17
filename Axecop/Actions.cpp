@@ -3,6 +3,8 @@
 #include <fstream>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/xml_oarchive.hpp>
+#include <boost/archive/xml_iarchive.hpp>
 #include <boost/serialization/export.hpp>
 #include <boost/serialization/vector.hpp>
 #include <boost/foreach.hpp>
@@ -10,35 +12,28 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Actions
 //////////////////////////////////////////////////////////////////////////////////
-
-/*long ExtObject::aMyAction(LPVAL params)
-{
-	// Get the example parameter
-	int param = params[0].GetInt();
-
-	// Do nothing
-	return 0;
-}*/
-
-
 long ExtObject::aSave( LPVAL params )
 {
+	using boost::serialization::make_nvp;
 	std::ofstream ofs(params[0].GetString());
 	boost::archive::text_oarchive oa(ofs);
-	oa & sectors;
-	oa & missions;
-	oa & playerInventory;
+	//boost::archive::xml_oarchive oa(ofs);
+	oa << make_nvp("sectors", sectors);
+	oa << make_nvp("missions", missions);
+	oa << make_nvp("inventory", playerInventory);
 	return 0;
 }
 
 
 long ExtObject::aLoad( LPVAL params )
 {
+	using boost::serialization::make_nvp;
 	std::ifstream ifs(params[0].GetString());
 	boost::archive::text_iarchive ia(ifs);
-	ia & sectors;
-	ia & missions;
-	ia & playerInventory;
+	//boost::archive::xml_iarchive ia(ifs);
+	ia >> make_nvp("sectors", sectors);
+	ia >> make_nvp("missions", missions);
+	ia >> make_nvp("inventory", playerInventory);
 	return 0;
 }
 

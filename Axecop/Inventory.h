@@ -5,6 +5,7 @@
 #include <string>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/nvp.hpp>
 #include "InventoryItem.h"
 
 //typedef std::string InventoryItem;
@@ -75,8 +76,9 @@ private:
 	int _idcounter;
 	template<class Archive>
 	void serialize(Archive& ar, const unsigned int version) {
-		ar & _items;
-		ar & _idcounter;
+		using boost::serialization::make_nvp;
+		ar & make_nvp("items", _items);
+		ar & make_nvp("idcounter", _idcounter);
 	}
 };
 #endif // Inventory_h__

@@ -3,6 +3,7 @@
 
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/nvp.hpp>
 
 class Sector
 {
@@ -22,10 +23,11 @@ private:
 	template<class Archive>
 	void serialize(Archive& ar, const unsigned int version)
 	{
-		ar & _id;
-		ar & name;
-		ar & capability;
-		ar & _difficulty;
+		using boost::serialization::make_nvp;
+		ar & make_nvp("id", _id);
+		ar & make_nvp("name", name);
+		ar & make_nvp("capability", capability);
+		ar & make_nvp("difficulty", _difficulty);
 	}
 };
 

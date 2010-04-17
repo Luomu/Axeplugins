@@ -150,7 +150,7 @@ long ExtObject::eMissionValue(LPVAL params, ExpReturn &ret)
 		else if(pm == _T("cost"))
 			return ret = mission->dropCost();
 		else
-			throw Axception("Unknown mission property");
+			return ret = mission->intprop(pm.GetBuffer());
 	}
 	catch (std::out_of_range oor) {
 		RaiseConstructError("Mission ID out of range");
