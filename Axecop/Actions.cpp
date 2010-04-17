@@ -72,6 +72,10 @@ long ExtObject::aGenerateMissions( LPVAL params )
 		int secid = axeutils::random(0, availSectors.size());
 		availSectors.erase(availSectors.begin() + secid);
 		missions.push_back(Mission(secid));
+		Mission& newmiss = missions.back();
+		newmiss.properties["visibility"] = axeutils::random(1, 5);
+		newmiss.properties["enemylevel"] = axeutils::random(1, 5);
+		newmiss.properties["hostility"] = axeutils::random(1, 5);
 		--howmany;
 	}
 
