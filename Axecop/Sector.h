@@ -16,10 +16,14 @@ public:
 	int difficulty() const { return _difficulty; }
 private:
 	friend class boost::serialization::access;
+	friend class ExtObject;
 	int _id;
 	std::string name;
 	int capability;
 	int _difficulty;
+	float environment;
+	float visibility;
+	float enemies;
 	template<class Archive>
 	void serialize(Archive& ar, const unsigned int version)
 	{
@@ -28,6 +32,9 @@ private:
 		ar & make_nvp("name", name);
 		ar & make_nvp("capability", capability);
 		ar & make_nvp("difficulty", _difficulty);
+		ar & make_nvp("environment", environment);
+		ar & make_nvp("visibility", visibility);
+		ar & make_nvp("enemies", enemies);
 	}
 };
 

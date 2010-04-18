@@ -16,8 +16,8 @@ long ExtObject::aSave( LPVAL params )
 {
 	using boost::serialization::make_nvp;
 	std::ofstream ofs(params[0].GetString());
-	boost::archive::text_oarchive oa(ofs);
-	//boost::archive::xml_oarchive oa(ofs);
+	//boost::archive::text_oarchive oa(ofs);
+	boost::archive::xml_oarchive oa(ofs);
 	oa << make_nvp("sectors", sectors);
 	oa << make_nvp("missions", missions);
 	oa << make_nvp("inventory", playerInventory);
@@ -29,8 +29,8 @@ long ExtObject::aLoad( LPVAL params )
 {
 	using boost::serialization::make_nvp;
 	std::ifstream ifs(params[0].GetString());
-	boost::archive::text_iarchive ia(ifs);
-	//boost::archive::xml_iarchive ia(ifs);
+	//boost::archive::text_iarchive ia(ifs);
+	boost::archive::xml_iarchive ia(ifs);
 	ia >> make_nvp("sectors", sectors);
 	ia >> make_nvp("missions", missions);
 	ia >> make_nvp("inventory", playerInventory);
@@ -75,7 +75,7 @@ long ExtObject::aGenerateMissions( LPVAL params )
 		Mission& newmiss = missions.back();
 		newmiss.properties["visibility"] = axeutils::random(1, 5);
 		newmiss.properties["enemylevel"] = axeutils::random(1, 5);
-		newmiss.properties["hostility"] = axeutils::random(1, 5);
+		newmiss.properties["environment"] = axeutils::random(1, 5);
 		--howmany;
 	}
 

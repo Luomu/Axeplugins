@@ -174,6 +174,14 @@ long ExtObject::eSectorProperty(LPVAL params, ExpReturn &ret)
 			return ret.ReturnString(pRuntime, sector->sectorName().c_str());
 		else if(pm == _T("difficulty"))
 			return ret = sector->difficulty();
+		else if(pm == _T("environment"))
+			return ret = sector->environment;
+		else if(pm == _T("enemies"))
+			return ret = sector->enemies;
+		else if(pm ==_T("visibility"))
+			return ret = sector->visibility;
+		else if(pm == _T("capability"))
+			return ret = sector->capability;
 		else
 			throw Axception("Unknown mission property");
 	}
